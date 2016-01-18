@@ -7,7 +7,7 @@ using System;
 
 class ProjectBuild : Editor
 {
-    //在这里找出你当前工程所有的场景文件，假设你只想把部分的scene文件打包 那么这里可以写你的条件判断 总之返回一个字符串数组。
+    //脭脷脮芒脌茂脮脪鲁枚脛茫碌卤脟掳鹿陇鲁脤脣霉脫脨碌脛鲁隆戮掳脦脛录镁拢卢录脵脡猫脛茫脰禄脧毛掳脩虏驴路脰碌脛scene脦脛录镁麓貌掳眉 脛脟脙麓脮芒脌茂驴脡脪脭脨麓脛茫碌脛脤玫录镁脜脨露脧 脳脺脰庐路碌禄脴脪禄赂枚脳脰路没麓庐脢媒脳茅隆拢
     static string[] GetBuildScenes()
     {
         List<string> names = new List<string>();
@@ -22,7 +22,7 @@ class ProjectBuild : Editor
         return names.ToArray();
     }
 
-    //获取命令行中的参数，匹配出project-后字符串
+    //禄帽脠隆脙眉脕卯脨脨脰脨碌脛虏脦脢媒拢卢脝楼脜盲鲁枚project-潞贸脳脰路没麓庐
     static string GetProjectSuffix()
     {
         foreach (string arg in System.Environment.GetCommandLineArgs())
@@ -40,23 +40,23 @@ class ProjectBuild : Editor
     {
       //  MovieToolMenuItems.MoveMovie();
      //   ResourceToolMenuItems.GenResourceConfig();
-        //MultiLanguageTool.GenAllConfig();   //暂时取消 BY LANE
+        //MultiLanguageTool.GenAllConfig();   //脭脻脢卤脠隆脧没 BY LANE
     }
 
-    //shell脚本直接调用这个静态方法
+    //shell陆脜卤戮脰卤陆脫碌梅脫脙脮芒赂枚戮虏脤卢路陆路篓
     [MenuItem("AutoBuild/BuildForIPhone")]
     static void BuildForIPhone()
     {
         // prepare for build
         PrepareBuild();
 
-        //打包之前先设置一下 预定义标签， 我建议大家最好 做一些  91 同步推 快用 PP助手一类的标签。 这样在代码中可以灵活的开启 或者关闭 一些代码。
-        //因为 这里我是承接 上一篇文章， 我就以sharesdk做例子 ，这样方便大家学习 ，
+        //麓貌掳眉脰庐脟掳脧脠脡猫脰脙脪禄脧脗 脭陇露篓脪氓卤锚脟漏拢卢 脦脪陆篓脪茅麓贸录脪脳卯潞脙 脳枚脪禄脨漏  91 脥卢虏陆脥脝 驴矛脫脙 PP脰煤脢脰脪禄脌脿碌脛卤锚脟漏隆拢 脮芒脩霉脭脷麓煤脗毛脰脨驴脡脪脭脕茅禄卯碌脛驴陋脝么 禄貌脮脽鹿脴卤脮 脪禄脨漏麓煤脗毛隆拢
+        //脪貌脦陋 脮芒脌茂脦脪脢脟鲁脨陆脫 脡脧脪禄脝陋脦脛脮脗拢卢 脦脪戮脥脪脭sharesdk脳枚脌媒脳脫 拢卢脮芒脩霉路陆卤茫麓贸录脪脩搂脧掳 拢卢
         // PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.iPhone, "USE_SHARE");
-        //这里就是构建xcode工程的核心方法了， 
-        //参数1 需要打包的所有场景
-        //参数2 需要打包的名子， 这里取到的就是 shell传进来的字符串 91
-        //参数3 打包平台
+        //脮芒脌茂戮脥脢脟鹿鹿陆篓xcode鹿陇鲁脤碌脛潞脣脨脛路陆路篓脕脣拢卢 
+        //虏脦脢媒1 脨猫脪陋麓貌掳眉碌脛脣霉脫脨鲁隆戮掳
+        //虏脦脢媒2 脨猫脪陋麓貌掳眉碌脛脙没脳脫拢卢 脮芒脌茂脠隆碌陆碌脛戮脥脢脟 shell麓芦陆酶脌麓碌脛脳脰路没麓庐 91
+        //虏脦脢媒3 麓貌掳眉脝陆脤篓
         BuildPipeline.BuildPlayer(GetBuildScenes(), "IOS", BuildTarget.iOS, BuildOptions.None);
      //   MovieToolMenuItems.RestMovieClips();
 
@@ -95,7 +95,7 @@ class ProjectBuild : Editor
 
         Debug.Log("create apk");
 
-        EditorPrefs.SetString("AndroidSdkRoot", "C:/Users/dsw/AppData/Local/Android/sdk");
+        //EditorPrefs.SetString("AndroidSdkRoot", "C:/Users/dsw/AppData/Local/Android/sdk");
 
         Debug.Log("create AndroidSdkRoot");
         BuildPipeline.BuildPlayer(GetBuildScenes(), path, BuildTarget.Android, BuildOptions.None);
