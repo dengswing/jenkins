@@ -16,6 +16,6 @@ BUILD_IOS_PATH=$Work_Path/AutoBuild/buildios.sh
 
 
 #开始生成ipa#
-$BUILD_IOS_PATH $PROJECT_PATH $1
+$BUILD_IOS_PATH $PROJECT_PATH $1 $Work_Path
     
 echo "ipa生成完毕"
