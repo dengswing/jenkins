@@ -25,6 +25,13 @@ export_path=$3
 #build文件夹路径  
 build_path=${project_path}/build
 
+if [ -d "$export_path"]; then
+rmdir "$export_path"
+mkdir "$export_path"
+else
+mkdir "$export_path"
+fi
+
 #清理#
 xcodebuild  clean
 
