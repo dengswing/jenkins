@@ -1,12 +1,12 @@
 #!/bin/sh
 
 #参数判断  
-if [ $# != 1 ];then  
-    echo "需要一个参数。 参数是游戏包的名子"  
+if [ $# != 2 ];then
+    echo "需要2个参数。 参数是游戏包的名子,脚本路径"
     exit     
 fi  
-
-Work_Path=$1
+    
+Work_Path=$2
 
 #游戏程序路径#
 PROJECT_PATH=$Work_Path/IOS
@@ -16,6 +16,6 @@ BUILD_IOS_PATH=$Work_Path/AutoBuild/buildios.sh
 
 
 #开始生成ipa#
-$BUILD_IOS_PATH $PROJECT_PATH $Work_Path
+$BUILD_IOS_PATH $PROJECT_PATH $1
     
 echo "ipa生成完毕"
