@@ -6,15 +6,16 @@ if [ $# != 1 ];then
     exit     
 fi  
 
+Work_Path=$1
 
 #游戏程序路径#
-PROJECT_PATH=/Users/shinezone/.jenkins/jobs/Ios/workspace/IOS
+PROJECT_PATH=$Work_Path/IOS
 
-#IOS打包脚本路径#
-BUILD_IOS_PATH=/Users/shinezone/.jenkins/jobs/Ios/workspace/AutoBuild/buildios.sh
+#IOS打包脚本路径
+BUILD_IOS_PATH=$Work_Path/AutoBuild/buildios.sh
 
 
 #开始生成ipa#
-$BUILD_IOS_PATH $PROJECT_PATH $1
-
+$BUILD_IOS_PATH $PROJECT_PATH $Work_Path
+    
 echo "ipa生成完毕"
