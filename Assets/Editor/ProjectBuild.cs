@@ -38,8 +38,8 @@ class ProjectBuild : Editor
     // execute before build
     static void PrepareBuild()
     {
-      //  MovieToolMenuItems.MoveMovie();
-     //   ResourceToolMenuItems.GenResourceConfig();
+        //  MovieToolMenuItems.MoveMovie();
+        //   ResourceToolMenuItems.GenResourceConfig();
         //MultiLanguageTool.GenAllConfig();   //暂时取消 BY LANE
     }
 
@@ -57,51 +57,34 @@ class ProjectBuild : Editor
         //参数1 需要打包的所有场景
         //参数2 需要打包的名子， 这里取到的就是 shell传进来的字符串 91
         //参数3 打包平台
+#if UNITY_4_6_1 || UNITY_4_6_5 || UNITY_4_6_6
+        BuildPipeline.BuildPlayer(GetBuildScenes(), "IOS", BuildTarget.iPhone, BuildOptions.None);
+#else 
         BuildPipeline.BuildPlayer(GetBuildScenes(), "IOS", BuildTarget.iOS, BuildOptions.None);
-     //   MovieToolMenuItems.RestMovieClips();
+#endif
+        //   MovieToolMenuItems.RestMovieClips();
 
     }
 
     [MenuItem("AutoBuild/BuildForAndroid")]
     static void BuildForAndroid()
     {
-        Debug.Log("BuildForAndroid");
-        // prepare for build
         PrepareBuild();
-        Debug.Log("PrepareBuild ");
-        // Function.DeleteFolder(Application.dataPath+"/Plugins/Android");
-
-        // if(Function.projectName == "91")
-        // {
-        // 	Function.CopyDirectory(Application.dataPath+"/91",Application.dataPath+"/Plugins/Android");
-        // 	PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, "USE_SHARE");
-        // }
-
-        // string version = ProjectTools.GetBGitVersion();
-
         string version = "1.0";
         ProjectTools.UpdateVersionFile(version);
-
-        Debug.Log("set version");
+        Debug.Log("set version" + version);
         string path = Application.dataPath + "/../Export/";
 
         if (!System.IO.Directory.Exists(path))
         {
             System.IO.Directory.CreateDirectory(path);
         }
-        Debug.Log("create file");
 
         path = path + GetProjectSuffix() + version + ".apk";
 
-        Debug.Log("create apk");
+       // EditorPrefs.SetString("AndroidSdkRoot", "C:/Users/dsw/AppData/Local/Android/sdk");
 
-        EditorPrefs.SetString("AndroidSdkRoot", "C:/Users/dsw/AppData/Local/Android/sdk");
 
-        Debug.Log("create AndroidSdkRoot");
         BuildPipeline.BuildPlayer(GetBuildScenes(), path, BuildTarget.Android, BuildOptions.None);
-
-        Debug.Log("create finish");
-        //    MovieToolMenuItems.RestMovieClips();
-
     }
 }
