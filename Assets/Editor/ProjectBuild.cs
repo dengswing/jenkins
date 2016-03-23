@@ -87,4 +87,26 @@ class ProjectBuild : Editor
 
         BuildPipeline.BuildPlayer(GetBuildScenes(), path, BuildTarget.Android, BuildOptions.None);
     }
+
+    [MenuItem("AutoBuild/BuildForWeb")]
+    static void BuildForWeb()
+    {
+        PrepareBuild();
+        string version = "1.0";
+        ProjectTools.UpdateVersionFile(version);
+        Debug.Log("set version" + version);
+        string path = Application.dataPath + "/../Export/";
+
+        if (!System.IO.Directory.Exists(path))
+        {
+            System.IO.Directory.CreateDirectory(path);
+        }
+
+        path = path + GetProjectSuffix() + version + ".exe";
+
+        // EditorPrefs.SetString("AndroidSdkRoot", "C:/Users/dsw/AppData/Local/Android/sdk");
+
+
+        BuildPipeline.BuildPlayer(GetBuildScenes(), path, BuildTarget.StandaloneWindows64, BuildOptions.None);
+    }
 }

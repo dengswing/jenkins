@@ -1,0 +1,14 @@
+Assets/Resources/
+Library/
+Export/
+Assembly-CSharp-Editor-vs.csproj
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp-vs.csproj
+Assembly-CSharp.csproj
+jenkins.CSharp.csproj
+jenkins.v11.suo
+obj/
+jenkins-csharp.sln
+jenkins.CSharp.Editor.csproj
+jenkins.sln
+jenkins.userprefs
